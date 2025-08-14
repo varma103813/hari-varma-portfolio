@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hari Varma — Data Scientist Portfolio</title>
+  <meta name="description" content="Data Scientist portfolio — ML, MLOps, AI Observability, Credit Risk, Fraud Detection, Time-Series Forecasting." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0b1020; /* deep navy */
+      --panel:#121833;
+      --muted:#8ea0c0;
+      --accent:#7aa2f7; /* soft blue */
+      --accent-2:#a6e3a1; /* mint */
+      --chip:#1c2447;
+      --ring: rgba(122,162,247,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;height:100%}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto; background: radial-gradient(1000px 600px at 80% -10%, #26304d 0%, #0b1020 60%) fixed var(--bg); color:#e7ecff; line-height:1.6}
+    a{color:var(--accent); text-decoration:none}
+    a:hover{opacity:.92}
+    .container{max-width:1080px;margin:0 auto;padding:28px 22px}
+    .nav{display:flex;gap:18px;align-items:center;justify-content:space-between}
+    .nav .brand{font-weight:800; letter-spacing:.3px}
+    .nav .links a{margin-left:16px;font-weight:600}
+    .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center; padding:28px 0 8px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:16px; box-shadow: 0 10px 30px rgba(8,12,30,.35); backdrop-filter: blur(6px)}
+    .panel{padding:26px}
+    .kicker{color:var(--accent-2); font-weight:700; letter-spacing:.2em; text-transform:uppercase; font-size:.78rem}
+    h1{margin:.3em 0 .2em; font-size:clamp(28px,6vw,44px); line-height:1.15}
+    .sub{color:#cbd7ff; font-size:1.02rem}
+    .chip{display:inline-flex;align-items:center;gap:8px; padding:8px 12px; background:var(--chip); border:1px solid rgba(255,255,255,.08); border-radius:999px; font-size:.86rem; color:#cfe3ff}
+    .chip-row{display:flex; flex-wrap:wrap; gap:10px}
+    .cta-row{display:flex; gap:12px; margin-top:16px}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:12px; font-weight:700; border:1px solid rgba(255,255,255,.12); background:#1b2244}
+    .btn.primary{background:linear-gradient(135deg,var(--accent),#5b86ff); color:#0b1020}
+    .btn.secondary{background:#121833}
+    .grid{display:grid; gap:18px}
+    .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+    .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .grid.cols-2{grid-template-columns:1fr}
+    }
+    .heading{display:flex; align-items:center; justify-content:space-between; margin:24px 0 10px}
+    h2{margin:0; font-size:1.6rem}
+    .muted{color:var(--muted)}
+    .project h3{margin:.2em 0}
+    .tag{font-size:.72rem; padding:4px 8px; border-radius:999px; background:#0e1733; color:#b9c9ff; border:1px solid rgba(255,255,255,.08)}
+    .tags{display:flex; gap:8px; flex-wrap:wrap}
+    .metrics{display:flex; gap:14px; flex-wrap:wrap; margin-top:8px; color:#abc1ff; font-size:.9rem}
+    .metrics strong{color:#e7ecff}
+    .footer{margin:30px 0 80px; color:#9db2ff}
+    .section{margin-top:24px}
+    .list{display:flex; gap:10px; flex-wrap:wrap}
+    .pill{padding:8px 10px; border-radius:10px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08)}
+    .timeline{position:relative; padding-left:18px}
+    .timeline::before{content:""; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background:linear-gradient(var(--ring),transparent)}
+    .timeline .item{position:relative; margin:12px 0 0}
+    .timeline .item::before{content:""; position:absolute; left:-13px; top:6px; width:10px; height:10px; border-radius:999px; background:var(--accent)}
+    .resume{display:flex; gap:10px; align-items:center}
+    .note{font-size:.9rem; color:#a9bdf5}
+    .sep{height:1px; background:linear-gradient(90deg,transparent,rgba(255,255,255,.1),transparent); margin:24px 0}
+
+    /* Headshot */
+    .headshot-card{display:flex; align-items:center; justify-content:center; overflow:hidden}
+    .headshot{max-width:100%; border-radius:20px; border:1px solid rgba(255,255,255,.12); box-shadow:0 12px 40px rgba(8,12,30,.55)}
+
+    /* Accordion */
+    details.accordion{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.08); border-radius:14px; padding:16px 18px; margin:10px 0}
+    details.accordion > summary{cursor:pointer; list-style:none; font-weight:700}
+    details.accordion > summary::-webkit-details-marker{display:none}
+    details.accordion[open]{box-shadow:0 10px 30px rgba(8,12,30,.35)}
+    .role-meta{color:#c7d6ff; font-size:.92rem; margin:.2rem 0 .6rem}
+    .resp{margin:.2rem 0 0 0; padding-left:18px}
+    .resp li{margin:.28rem 0}
+  </style>
+</head>
+<body>
+  <header class="container">
+    <nav class="nav">
+      <div class="brand">Hari Varma</div>
+      <div class="links">
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="card panel">
+        <div class="kicker">Data Scientist</div>
+        <h1>Turning messy data into shipped ML that moves business metrics</h1>
+        <p class="sub">Results‑driven Data Scientist (6+ years) delivering scalable ML across insurance, healthcare, finance, and consumer domains. Strengths: predictive modeling, real‑time data pipelines (Spark, Kafka), cloud (Azure, AWS), and production ML (MLflow, CI/CD). I combine data engineering + ML to ship measurable business impact.</p>
+
+        <div class="chip-row" style="margin-top:12px">
+          <span class="chip" title="End‑to‑end ML">💡 End‑to‑End ML</span>
+          <span class="chip" title="MLOps & Deployment">🚀 MLOps & Deployment</span>
+          <span class="chip" title="AI Observability">📈 AI Observability</span>
+          <span class="chip" title="Risk Modeling">🛡️ Risk Modeling</span>
+          <span class="chip" title="Time‑Series">⏱️ Time‑Series</span>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#projects">View Projects</a>
+          <a class="btn secondary" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+      <div class="card panel headshot-card">
+        <!-- IMPORTANT: upload IMG_4681.JPG to the repo root (same folder as index.html) -->
+        <img class="headshot" src="./IMG_4681.JPG" alt="Hari Varma headshot" />
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="heading">
+        <h2>Featured Projects</h2>
+        <a href="https://github.com/varma103813?tab=repositories" target="_blank" rel="noopener">GitHub ↗</a>
+      </div>
+      <div class="grid cols-3">
+        <!-- Project 1 -->
+        <article class="card panel project">
+          <div class="tags"><span class="tag">Time‑Series</span><span class="tag">Forecasting</span><span class="tag">Streamlit</span></div>
+          <h3>AQI & Population Forecasting Dashboard</h3>
+          <p class="muted">End‑to‑end forecasting for AQI and population (2023–2030) with feature engineering and interactive visualizations.</p>
+          <p><a href="#" target="_blank" rel="noopener">Repo ↗</a></p>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="card panel project">
+          <div class="tags"><span class="tag">Finance</span><span class="tag">Explainable ML</span></div>
+          <h3>Credit Risk Scoring</h3>
+          <p class="muted">A machine learning pipeline for predicting default probabilities, complete with model explainability tools.</p>
+          <p><a href="#" target="_blank" rel="noopener">Repo ↗</a></p>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="card panel project">
+          <div class="tags"><span class="tag">Insurance</span><span class="tag">Fraud Detection</span></div>
+          <h3>Insurance Claims Fraud Detection</h3>
+          <p class="muted">Fraud detection system for insurance claims using imbalanced data handling and API deployment.</p>
+          <p><a href="#" target="_blank" rel="noopener">Repo ↗</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="heading"><h2>Skills</h2></div>
+      <div class="grid cols-2">
+        <div class="card panel">
+          <h3>Data & ML</h3>
+          <div class="list">
+            <span class="pill">EDA, Feature Engineering</span>
+            <span class="pill">Time‑Series (Prophet, ARIMA)</span>
+            <span class="pill">Classification & Ranking</span>
+            <span class="pill">Imbalanced Learning</span>
+            <span class="pill">Explainability (SHAP)</span>
+            <span class="pill">Experimentation</span>
+          </div>
+        </div>
+        <div class="card panel">
+          <h3>MLOps & Platform</h3>
+          <div class="list">
+            <span class="pill">Spark • Airflow</span>
+            <span class="pill">MLflow • Docker</span>
+            <span class="pill">Azure ML • AWS Lambda</span>
+            <span class="pill">Databricks • Kafka</span>
+            <span class="pill">CI/CD (GitHub Actions)</span>
+            <span class="pill">Observability (Evidently, GE)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="section">
+      <div class="heading"><h2>Experience</h2></div>
+
+      <details class="accordion">
+        <summary>Data Scientist — Nationwide Insurance (Columbus, OH) • 09/2024 – Present</summary>
+        <div class="role-meta">Insurance • Azure ML • Spark • Kafka • A/B Testing</div>
+        <ul class="resp">
+          <li>Built predictive models (Logistic Regression, GBT) in Azure ML to assess claims risk and prevent fraud; reduced false positives by 22%.</li>
+          <li>Engineered real‑time pipelines with Kafka for policyholder data enabling instant underwriting decisions.</li>
+          <li>Used Databricks + Spark for training and batch scoring over 100M+ records.</li>
+          <li>Designed A/B tests for risk models and outreach strategies; tracked experiments and DL prototypes.</li>
+          <li>Customer segmentation via clustering to support retention campaigns; evaluated with ROC & K‑fold CV.</li>
+        </ul>
+      </details>
+
+      <details class="accordion">
+        <summary>Data Scientist — Bon Secours Mercy Health (Cincinnati, OH) • 11/2023 – 08/2024</summary>
+        <div class="role-meta">Healthcare • Azure ML • Spark • NLP</div>
+        <ul class="resp">
+          <li>Developed patient readmission prediction models to reduce unnecessary hospital stays and improve care planning.</li>
+          <li>Built distributed Spark pipelines processing multi‑hospital clinical data to improve data quality and reporting.</li>
+          <li>Applied NLP on clinical notes to detect critical indicators assisting triage and escalation.</li>
+          <li>Used K‑means clustering to identify patient cohorts and guide population‑health initiatives.</li>
+        </ul>
+      </details>
+
+      <details class="accordion">
+        <summary>Machine Learning Engineer — Goldman Sachs (Mumbai, India) • 02/2021 – 07/2023</summary>
+        <div class="role-meta">Finance • Spark • AWS Lambda • Docker • Kubernetes • CI/CD</div>
+        <ul class="resp">
+          <li>Designed ML pipelines with Spark and AWS Lambda for credit risk scoring, improving inference efficiency by 30%.</li>
+          <li>Deployed Dockerized models on Kubernetes; standardized CI/CD with Jenkins and Git‑based workflows.</li>
+          <li>Built fraud detection models (Random Forest, SVM) improving detection precision by 12%.</li>
+          <li>Created Tableau dashboards for real‑time model monitoring and stakeholder reporting.</li>
+          <li>Optimized ETL jobs and standardized CDC‑based model refresh to improve pipeline uptime.</li>
+        </ul>
+      </details>
+
+      <details class="accordion">
+        <summary>Data Analyst — Havells India (Mumbai, India) • 06/2019 – 01/2021</summary>
+        <div class="role-meta">Consumer • SQL • Python • Tableau</div>
+        <ul class="resp">
+          <li>Automated ETL and built SQL/Python pipelines, reducing manual reporting by 50%.</li>
+          <li>Developed Tableau dashboards tracking sales, inventory, and marketing KPIs.</li>
+          <li>Performed EDA to surface seasonal trends and slow‑moving SKUs for inventory optimization.</li>
+          <li>Predicted churn with XGBoost to support targeted retention initiatives; used NLP for review sentiment.</li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="heading"><h2>Contact</h2></div>
+      <div class="card panel">
+        <p>Open to full‑time Data Scientist roles. The quickest way to reach me:</p>
+        <p>
+          <a class="btn" href="mailto:varmanagaraju539@gmail.com">Email</a>
+          <a class="btn" href="https://www.linkedin.com/in/hari-varma-5340aa329/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/varma103813" target="_blank" rel="noopener">GitHub</a>
+        </p>
+      </div>
+    </section>
+
+    <footer class="container footer">
+      © <span id="y"></span> Hari Varma • Built with static HTML/CSS • Hosted on GitHub Pages
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
